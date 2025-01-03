@@ -1,6 +1,15 @@
 package com.wecp.progressive.entity;
 
-public class Cricketer {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.util.Comparator;
+
+@Entity
+public class Cricketer implements Comparable<Cricketer> {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cricketerId;
     private int teamId;
     private String cricketerName;
@@ -8,13 +17,13 @@ public class Cricketer {
     private String nationality;
     private int experience;
     private String role;
+    private int totalRuns;
     private int totalWickets;
 
     public Cricketer() {
     }
 
-    public Cricketer(int cricketerId, int teamId, String cricketerName, int age, String nationality, int experience,
-            String role, int totalWickets) {
+    public Cricketer(int cricketerId, int teamId, String cricketerName, int age, String nationality, int experience, String role, int totalRuns, int totalWickets) {
         this.cricketerId = cricketerId;
         this.teamId = teamId;
         this.cricketerName = cricketerName;
@@ -22,6 +31,7 @@ public class Cricketer {
         this.nationality = nationality;
         this.experience = experience;
         this.role = role;
+        this.totalRuns = totalRuns;
         this.totalWickets = totalWickets;
     }
 
@@ -81,6 +91,14 @@ public class Cricketer {
         this.role = role;
     }
 
+    public int getTotalRuns() {
+        return totalRuns;
+    }
+
+    public void setTotalRuns(int totalRuns) {
+        this.totalRuns = totalRuns;
+    }
+
     public int getTotalWickets() {
         return totalWickets;
     }
@@ -88,6 +106,10 @@ public class Cricketer {
     public void setTotalWickets(int totalWickets) {
         this.totalWickets = totalWickets;
     }
-    
 
+    @Override
+    public int compareTo(Cricketer otherCricketer) {
+        return Comparator.comparingInt(Cricketer::getExperience)
+                .compare(this, otherCricketer);
+    }
 }
