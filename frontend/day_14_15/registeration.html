@@ -1,12 +1,15 @@
-<!-- Create login form Username and Password fields in login form
-    where input fields has following cofigurations:
-     - username will have  loginUsername id 
-     - password field will have loginPassword id
+<!-- Create Registeration form with input field  that has following id
+registerName: this will represent the person name
+registerEmail: this will represent the email id 
+registerUsername: this will represent the  username 
+registerPassword: this will represent the password
+create a button and onclick you call function register() from validation.js
 
-    validate: 
-    -loginUsername: should not be empty
-    -loginPassword: should not be empty
-
+The form will contain the following validation rules ;
+Every field is required 
+registerUsername: it will not contain any special characters 
+registerEmail: it will be a valid email
+registerPassword: it will be of atleast 8 characters 
 -->
 
 <!DOCTYPE html>
@@ -21,17 +24,25 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h2>Login</h2>
-                <form id="loginForm">
+                <h2>Register</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" required>
+                        <input type="text" class="form-control" id="regUsername" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" required>
+                        <input type="password" class="form-control" id="regPassword" required>
                     </div>
-                    <button type="button" class="btn btn-primary" onclick="login()">Login</button>
+                    <button type="button" class="btn btn-primary" onclick="register()">Register</button>
                 </form>
             </div>
         </div>
